@@ -1,0 +1,28 @@
+{
+  "name": "01card-challenge",
+  "version": "1.0.0",
+  "description": "API for card games",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorantun/01card-challenge.git"
+  },
+  "author": "Igor Antun <igor@antun.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/igorantun/01card-challenge/issues"
+  },
+  "homepage": "https://github.com/igorantun/01card-challenge#readme",
+  "devDependencies": {
+    "standard": "14.3.4"
+  },
+  "dependencies": {
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "helmet": "3.22.0"
+  }
+}
