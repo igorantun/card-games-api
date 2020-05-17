@@ -1,11 +1,8 @@
 const { Router } = require('express')
-const { hello } = require('./controllers')
+const gamesRouter = require('./games')
 
 const router = Router()
 
-router.get(
-  '/hello',
-  hello
-)
+router.use(gamesRouter)
 
 module.exports = router
