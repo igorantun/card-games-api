@@ -20,3 +20,10 @@ services:
       - ${API_PORT}:${API_PORT}
     volumes:
       - .:/usr/src/app
+
+  test:
+    build: .
+    command: npm run test
+    volumes:
+      - .:/usr/src/app
+    tty: true

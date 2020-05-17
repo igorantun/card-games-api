@@ -19,3 +19,6 @@ clean:
 
 sh:
 	@docker exec -it api /bin/ash
+
+test:
+	@docker-compose up test

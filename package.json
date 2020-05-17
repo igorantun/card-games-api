@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "API for card games",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "test": "jest",
     "lint": "standard"
   },
   "repository": {
@@ -19,12 +19,17 @@
   },
   "homepage": "https://github.com/igorantun/01card-challenge#readme",
   "devDependencies": {
+    "jest": "26.0.1",
     "nodemon": "2.0.4",
-    "standard": "14.3.4"
+    "standard": "14.3.4",
+    "supertest": "4.0.2"
   },
   "dependencies": {
     "dotenv": "8.2.0",
     "express": "4.17.1",
     "helmet": "3.22.0"
+  },
+  "standard": {
+    "env": [ "jest" ]
   }
 }
