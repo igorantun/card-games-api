@@ -3,8 +3,18 @@ version: '3'
 services:
   api:
     build: .
-    container_name: 01card-challenge
+    container_name: api
     command: npm start
+    env_file: .env
+    ports:
+      - ${API_PORT}:${API_PORT}
+    volumes:
+      - .:/usr/src/app
+
+  api-dev:
+    build: .
+    container_name: api-dev
+    command: npm run dev
     env_file: .env
     ports:
       - ${API_PORT}:${API_PORT}

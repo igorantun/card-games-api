@@ -1,5 +1,8 @@
+dev:
+	@docker-compose up api-dev
+
 start:
-	@docker-compose up
+	@docker-compose up api
 
 stop:
 	@docker-compose stop
@@ -15,4 +18,4 @@ clean:
 	@docker-compose down -v
 
 sh:
-	@docker exec -it 01card-challenge /bin/ash
+	@docker exec -it api /bin/ash
