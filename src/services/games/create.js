@@ -51,7 +51,7 @@ const create = async ({
   const game = new Game({ availableCards: deck })
   await game.save()
 
-  const buildResponse = pick(['id'])
+  const buildResponse = pick(['id', 'remainingCards'])
 
   return buildResponse(game)
 }

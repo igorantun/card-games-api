@@ -10,7 +10,7 @@ services:
       - ${API_PORT}:${API_PORT}
     volumes:
       - .:/usr/src/app
-    links:
+    depends_on:
       - database
 
   api-dev:
@@ -22,7 +22,7 @@ services:
       - ${API_PORT}:${API_PORT}
     volumes:
       - .:/usr/src/app
-    links:
+    depends_on:
       - database
 
   database:
@@ -34,6 +34,9 @@ services:
   test:
     build: .
     command: npm run test
+    env_file: .env
     volumes:
       - .:/usr/src/app
+    depends_on:
+      - database
     tty: true
