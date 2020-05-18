@@ -1,14 +1,14 @@
 const Joi = require('joi')
 
-const { ranks, suits } = require('../../../../utils/deck')
+const { ranks, suits } = require('../../../utils/deck')
 
-const createGameSchema = Joi.object({
-  deckCount: Joi
+const createDeckSchema = Joi.object({
+  decks: Joi
     .number()
     .min(0)
     .required(),
 
-  deckOptions: Joi.object({
+  options: Joi.object({
     without: Joi.object({
       ranks: Joi
         .array()
@@ -23,4 +23,4 @@ const createGameSchema = Joi.object({
   })
 }).required()
 
-module.exports = createGameSchema
+module.exports = createDeckSchema

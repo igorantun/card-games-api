@@ -18,7 +18,7 @@ const CardSchema = new mongoose.Schema({
   _id: false
 })
 
-const GameSchema = new mongoose.Schema({
+const DeckSchema = new mongoose.Schema({
   availableCards: {
     type: [CardSchema],
     required: true
@@ -41,9 +41,9 @@ const GameSchema = new mongoose.Schema({
   }
 })
 
-GameSchema.virtual('remainingCards').get(function () {
+DeckSchema.virtual('remainingCards').get(function () {
   return length(this.availableCards)
 })
 
-const Game = mongoose.model('Game', GameSchema)
-module.exports = Game
+const Deck = mongoose.model('Deck', DeckSchema)
+module.exports = Deck

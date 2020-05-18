@@ -1,5 +1,5 @@
-const Game = require('./game')
+const Deck = require('./deck')
 
 module.exports = {
-  Game
+  Deck
 }

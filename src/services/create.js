@@ -14,8 +14,8 @@ const {
   xprod
 } = require('ramda')
 
-const { Game } = require('../../models')
-const { ranks, suits } = require('../../utils/deck')
+const { Deck } = require('../models')
+const { ranks, suits } = require('../utils/deck')
 
 const generateCards = (options) => {
   const toCardObject = card => ({ rank: head(card), suit: last(card) })
@@ -43,17 +43,17 @@ const generateDeck = (count, options) =>
   ))
 
 const create = async ({
-  deckCount,
-  deckOptions
+  decks,
+  options
 }) => {
-  const deck = generateDeck(deckCount, deckOptions)
+  const cards = generateDeck(decks, options)
 
-  const game = new Game({ availableCards: deck })
-  await game.save()
+  const deck = new Deck({ availableCards: cards })
+  await deck.save()
 
   const buildResponse = pick(['id', 'remainingCards'])
 
-  return buildResponse(game)
+  return buildResponse(deck)
 }
 
 module.exports = create

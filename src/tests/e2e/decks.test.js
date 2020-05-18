@@ -9,12 +9,12 @@ beforeAll(async () =>
   )
 )
 
-describe('POST /games', () => {
+describe('Create deck', () => {
   test('With valid payload', () =>
     request(app)
-      .post('/games')
+      .post('/decks')
       .send({
-        deckCount: 2
+        decks: 2
       })
       .then(({ status, body }) => {
         expect(status).toBe(201)
@@ -26,9 +26,9 @@ describe('POST /games', () => {
 
   test('With invalid payload', () =>
     request(app)
-      .post('/games')
+      .post('/decks')
       .send({
-        deckCount: 'dois'
+        decks: 'dois'
       })
       .then(response => {
         expect(response.status).toBe(400)
@@ -36,9 +36,9 @@ describe('POST /games', () => {
           status: 400,
           message: [
             {
-              field: 'deckCount',
+              field: 'decks',
               type: 'number.base',
-              message: '"deckCount" must be a number'
+              message: '"decks" must be a number'
             }
           ]
         })

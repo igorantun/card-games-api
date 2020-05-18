@@ -1,8 +1,8 @@
 const { Router } = require('express')
-const gamesRouter = require('./games')
+const decksRouter = require('./decks')
 
 const router = Router()
 
-router.use(gamesRouter)
+router.use(decksRouter)
 
 module.exports = router
