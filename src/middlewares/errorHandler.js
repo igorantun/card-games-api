@@ -16,6 +16,10 @@ const errorHandler = (err, req, res, next) => {
     always(new InternalServerError())
   )(err)
 
+  if (error instanceof InternalServerError) {
+    console.error(err)
+  }
+
   const { status, body } = error
 
   return res.status(status).send(body)
