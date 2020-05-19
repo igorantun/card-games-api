@@ -29,7 +29,6 @@
     "express": "4.17.1",
     "helmet": "3.22.0",
     "joi": "14.3.1",
-    "knuth-shuffle-seeded": "1.0.6",
     "mongoose": "5.9.14",
     "ramda": "0.27.0",
     "shuffle-array": "1.0.1"

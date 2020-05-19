@@ -1,4 +1,4 @@
-const shuffle = require('knuth-shuffle-seeded')
+const shuffle = require('shuffle-array')
 const {
   always,
   defaultTo,
