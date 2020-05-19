@@ -6,16 +6,21 @@ const app = require('../../app')
 const createDeck = require('./helpers/createDeck')
 const buyCards = require('./helpers/buyCards')
 
-beforeAll(async () =>
+let deckId
+
+beforeAll(async () => {
   await mongoose.connect(
     process.env.DB_URL,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
-)
+
+  deckId = await createDeck(1, {
+    without: { ranks: ['A'] }
+  })
+})
 
 describe('Return cards to deck', () => {
   test('With valid deck_id and valid cards', async () => {
-    const deckId = await createDeck()
     const boughtCards = await buyCards(deckId, 5)
 
     return request(app)
@@ -27,16 +32,12 @@ describe('Return cards to deck', () => {
       .then(({ status, body }) => {
         expect(status).toBe(200)
         expect(body).toHaveProperty('remainingCards')
-        expect(body.remainingCards).toBe(49)
+        expect(body.remainingCards).toBe(45)
       })
   })
 
-  test('With valid deck_id and invalid cards', async () => {
-    const deckId = await createDeck(1, {
-      without: { ranks: ['A'] }
-    })
-
-    return request(app)
+  test('With valid deck_id and invalid cards', async () =>
+    request(app)
       .put(`/decks/${deckId}/return`)
       .send({
         cards: [
@@ -57,11 +58,11 @@ describe('Return cards to deck', () => {
           ]
         })
       })
-  })
+  )
 
   test('With invalid parameters', () =>
     request(app)
-      .put('/decks/not-a-deck/return')
+      .put(`/decks/${deckId}/return`)
       .send({
         position: 'otherside'
       })

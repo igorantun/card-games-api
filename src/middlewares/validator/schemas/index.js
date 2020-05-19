@@ -5,5 +5,5 @@ const returnSchema = require('./return')
 module.exports = {
   buySchema,
   createSchema,
-  returnSchema,
+  returnSchema
 }

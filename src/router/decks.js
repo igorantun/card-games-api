@@ -1,7 +1,10 @@
 const { Router } = require('express')
 
 const { wrapAsync } = require('../utils')
-const { validator } = require('../middlewares')
+const {
+  isValidObjectId,
+  validator
+} = require('../middlewares')
 const {
   buyController,
   createController,
@@ -24,18 +27,21 @@ router.post(
 
 router.put(
   '/decks/:id/buy',
+  isValidObjectId,
   validator(buySchema),
   wrapAsync(buyController)
 )
 
 router.put(
   '/decks/:id/return',
+  isValidObjectId,
   validator(returnSchema),
   wrapAsync(returnController)
 )
 
 router.put(
   '/decks/:id/shuffle',
+  isValidObjectId,
   wrapAsync(shuffleController)
 )
 
