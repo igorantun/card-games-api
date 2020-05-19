@@ -5,11 +5,13 @@ const { validator } = require('../middlewares')
 const {
   buyController,
   createController,
+  returnController,
   shuffleController
 } = require('../controllers')
 const {
   buySchema,
-  createSchema
+  createSchema,
+  returnSchema
 } = require('../middlewares/validator/schemas')
 
 const router = Router()
@@ -24,6 +26,12 @@ router.put(
   '/decks/:id/buy',
   validator(buySchema),
   wrapAsync(buyController)
+)
+
+router.put(
+  '/decks/:id/return',
+  validator(returnSchema),
+  wrapAsync(returnController)
 )
 
 router.put(

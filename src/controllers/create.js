@@ -3,12 +3,12 @@ const {
   pick
 } = require('ramda')
 
-const deckService = require('../services')
+const { createService } = require('../services')
 
 const createController = async (req, res) => {
   const body = path(['body'], req)
 
-  const deck = await deckService.create(
+  const deck = await createService(
     pick(['decks', 'options'], body)
   )
 

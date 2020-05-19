@@ -4,7 +4,7 @@ const {
 } = require('ramda')
 const mongoose = require('mongoose')
 
-const deckService = require('../services')
+const { buyService } = require('../services')
 const { BadRequestError } = require('../utils/errors')
 
 const buyController = async (req, res) => {
@@ -22,7 +22,7 @@ const buyController = async (req, res) => {
     }])
   }
 
-  const deck = await deckService.buy(id, cards)
+  const deck = await buyService(id, cards)
 
   res.status(200).send(deck)
 }
