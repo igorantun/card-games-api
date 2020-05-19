@@ -30,9 +30,9 @@ describe('Create deck', () => {
       .send({
         decks: 'dois'
       })
-      .then(response => {
-        expect(response.status).toBe(400)
-        expect(response.body).toEqual({
+      .then(({ status, body }) => {
+        expect(status).toBe(400)
+        expect(body).toEqual({
           status: 400,
           message: [
             {

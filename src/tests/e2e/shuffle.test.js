@@ -1,7 +1,8 @@
-const { path } = require('ramda')
 const mongoose = require('mongoose')
 const request = require('supertest')
 const app = require('../../app')
+
+const createDeck = require('./helpers/createDeck')
 
 beforeAll(async () =>
   await mongoose.connect(
@@ -9,14 +10,6 @@ beforeAll(async () =>
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
 )
-
-const createDeck = async (decks = 1, options = {}) => {
-  const response = await request(app)
-    .post('/decks')
-    .send({ decks, options })
-
-  return path(['body', 'id'], response)
-}
 
 describe('Shuffle deck', () => {
   test('With valid deck_id', async () => {
@@ -34,9 +27,9 @@ describe('Shuffle deck', () => {
   test('With invalid deck_id', () =>
     request(app)
       .put('/decks/not_a_deck/shuffle')
-      .then(response => {
-        expect(response.status).toBe(400)
-        expect(response.body).toEqual({
+      .then(({ status, body }) => {
+        expect(status).toBe(400)
+        expect(body).toEqual({
           status: 400,
           message: [
             {
