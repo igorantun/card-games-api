@@ -2,7 +2,7 @@ const Joi = require('joi')
 
 const { ranks, suits } = require('../../../utils/deck')
 
-const createDeckSchema = Joi.object({
+const createSchema = Joi.object({
   decks: Joi
     .number()
     .min(0)
@@ -23,4 +23,4 @@ const createDeckSchema = Joi.object({
   })
 }).required()
 
-module.exports = createDeckSchema
+module.exports = createSchema
