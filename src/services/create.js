@@ -42,7 +42,7 @@ const generateDeck = (count, options) =>
     Number(count)
   ))
 
-const create = async ({
+const createService = async ({
   decks,
   options
 }) => {
@@ -56,4 +56,4 @@ const create = async ({
   return buildResponse(deck)
 }
 
-module.exports = create
+module.exports = createService
