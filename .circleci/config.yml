@@ -1,0 +1,69 @@
+version: 2.1
+
+commands:
+  copy_env:
+    description: "Copy .env.example file to .env"
+    steps:
+      - run: cp .env.example .env
+  npm_install:
+    description: "Install NPM dependencies"
+    steps:
+      - run: npm install
+
+jobs:
+  lint:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "package-lock.json" }}
+      - run: |
+          npm install
+          npm run lint
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependencies-{{ checksum "package-lock.json" }}
+
+  test-e2e:
+    machine: true
+    steps:
+      - checkout
+      - copy_env
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "package-lock.json" }}
+      - npm_install
+      - run: docker-compose run --rm test-e2e
+
+  test-unit:
+    machine: true
+    steps:
+      - checkout
+      - copy_env
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "package-lock.json" }}
+      - npm_install
+      - run: docker-compose run --rm test-unit
+
+  test-coverage:
+    machine: true
+    steps:
+      - checkout
+      - copy_env
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "package-lock.json" }}
+      - npm_install
+      - run: docker-compose run --rm test-coverage
+
+workflows:
+  lint_and_test:
+    jobs:
+      - lint
+      - test-e2e
+      - test-unit
+      - test-coverage
