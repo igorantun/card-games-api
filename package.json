@@ -7,7 +7,7 @@
     "start": "node src/server.js",
     "test:e2e": "jest --verbose ./src/tests/e2e",
     "test:unit": "jest --verbose ./src/tests/unit",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "jest --collectCoverage",
     "lint": "standard"
   },
   "repository": {
