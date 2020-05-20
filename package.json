@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/igorantun/01card-challenge.git"
+    "url": "git+https://github.com/igorantun/card-games-api.git"
   },
   "author": "Igor Antun <igor@antun.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/igorantun/01card-challenge/issues"
+    "url": "https://github.com/igorantun/card-games-api/issues"
   },
-  "homepage": "https://github.com/igorantun/01card-challenge#readme",
+  "homepage": "https://github.com/igorantun/card-games-api#readme",
   "devDependencies": {
     "jest": "26.0.1",
     "nodemon": "2.0.4",
