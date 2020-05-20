@@ -1,12 +1,9 @@
 const {
   always,
-  clamp,
   cond,
   concat,
   equals,
   includes,
-  insert,
-  length,
   pick,
   reduce,
   reject,
@@ -18,14 +15,7 @@ const {
   BadRequestError,
   NotFoundError
 } = require('../utils/errors')
-
-const insertRandomly = (deck, card) => {
-  const size = length(deck)
-  const clampIndex = clamp(1, size - 1)
-  const index = Math.round(Math.random() * size)
-
-  return insert(clampIndex(index), card, deck)
-}
+const { insertRandomly } = require('../utils')
 
 const returnService = async (id, cards, position) => {
   const deck = await Deck.findById(id)
