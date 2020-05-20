@@ -20,5 +20,16 @@ clean:
 sh:
 	@docker exec -it api /bin/ash
 
+test-e2e:
+	@docker-compose up test-e2e
+
+test-unit:
+	@docker-compose up test-unit
+
+test-coverage:
+	@docker-compose up test-coverage
+
 test:
-	@docker-compose up test
+	@make test-e2e
+	@make test-unit
+	@make test-coverage

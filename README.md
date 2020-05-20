@@ -24,7 +24,10 @@ $ make kill # Kills containers
 $ make restart # Restarts server
 $ make clean # Cleans containers and volumes
 $ make sh # Opens shell inside api container
-$ make test # Runs `npm test` on container
+$ make test-e2e # Runs end-to-end test scripts
+$ make test-unit # Runs unit test scripts
+$ make test-coverage # Runs test coverage audit
+$ make test # Runs all tests scripts
 ```
 
 ## Routes

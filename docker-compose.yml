@@ -31,9 +31,29 @@ services:
     ports:
       - ${DB_PORT}:${DB_PORT}
 
-  test:
+  test-e2e:
     build: .
-    command: npm run test
+    command: npm run test:e2e
+    env_file: .env
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - database
+    tty: true
+
+  test-unit:
+    build: .
+    command: npm run test:unit
+    env_file: .env
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - database
+    tty: true
+
+  test-coverage:
+    build: .
+    command: npm run test:coverage
     env_file: .env
     volumes:
       - .:/usr/src/app
