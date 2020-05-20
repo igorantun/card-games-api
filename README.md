@@ -1,4 +1,6 @@
 # 🃏 Card games API
+[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=shield)](https://circleci.com/gh/igorantun/card-games-api)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/igorantun/card-games-api.svg?style=badge)](https://codecov.io/gh/igorantun/card-games-api)
 
 ## Description
 This is an API for managing card games. It supports creating card decks, buying cards, shuffling and returning them to the deck.
